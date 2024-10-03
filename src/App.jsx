@@ -11,6 +11,11 @@ import ShowUserName from './components/ShowUserName'
 import TempleteExpressions from './components/TempleteExpressions'
 
 function App() {
+  const cars = [
+    {id: 1, brand: "Ferrari", color: "Amarela", newCar: true, km: 0},
+    {id: 1, brand: "Kia", color: "Branco", newCar: false, km: 34343},
+    {id: 1, brand: "Renault", color: "Preto", newCar: false, km: 100},
+  ]
 
   return (
     <div className='test'>
@@ -23,8 +28,21 @@ function App() {
       <Hooks/>
       <ListRender/>
       <CondicionalRender/>
+      {/*  props */}
       <ShowUserName name= "Lucas"/>
-      <CarDetails brand="VW" km={100000} color="Preto"/>
+      {/* destructuring */}
+      <CarDetails brand="VW" km={100000} color="Preto" newCar={false}/>
+      {/* reaproveitando */}
+      <CarDetails brand="Ford" color="Branco" km={0} newCar={true} />
+      <CarDetails brand="Fiat" color="Azul" km={4000} newCar={false}/>
+      {/*Renderizar lista usando loop array de objetos*/}
+      {cars.map((car) => (
+        <CarDetails 
+        brand={car.brand} 
+        color={car.color} 
+        km={car.km} 
+        newCar={car.newCar} />
+      ))}
     </div>
   )
 }
